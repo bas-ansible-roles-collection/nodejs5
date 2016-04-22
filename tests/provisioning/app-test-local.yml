@@ -1,0 +1,11 @@
+---
+# Run tests for role
+
+- name: run role tests
+  hosts: project--nodejs5:&env--test-local
+  remote_user: "{{ privileged_remote_user }}"
+  become: yes
+  roles:
+    - ../../../nodejs5
+  tasks:
+    - include: ../tasks/main.yml
