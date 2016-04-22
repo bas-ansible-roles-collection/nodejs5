@@ -1,0 +1,6 @@
+---
+# Default variables - inventory or playbook overrides will be respected
+
+# BARC specific variables
+nodejs5_barc_role_name: nodejs5
+nodejs5_barc_role_version: 0.1.0
