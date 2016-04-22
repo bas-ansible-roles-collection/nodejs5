@@ -1,5 +1,5 @@
 ---
-# Tests ...
+# Tests if NodeJS and NPM can be installed and used
 
 # Flush handlers
 #
@@ -19,6 +19,7 @@
 # These tests mirror individual tasks to ensure they execute correctly
 # E.g. creating a user, installing the right package or generating a valid configuration file
 
+- include: atomic/install.yml
 - include: atomic/register-role.yml
 
 # Functionality tests
@@ -27,3 +28,5 @@
 # E.g. checking a web-server serves a web-page ensures the relevant packages and configuration files work together
 
 - include: functionality/barc-manifest.yml
+- include: functionality/test-nodejs.yml
+- include: functionality/test-npm.yml

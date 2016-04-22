@@ -16,11 +16,11 @@ multiple environments.
 
 The *Testing* environment tests a single scenario:
 
-* Tests NodeJS is installed correctly a node module can be installed
+* NodeJS and NPM are installed correctly using non-system package sources
 
 The *Local Testing* environment tests multiple scenarios:
 
-1. ...
+1. NodeJS and NPM are installed correctly using non-system package sources
 
 **Note:** *Local Testing* environments test scenarios on all operating systems this role supports. Services providing
 *Testing* environments may limit which operating system are available (e.g. SemaphoreCI only supports Ubuntu Trusty).

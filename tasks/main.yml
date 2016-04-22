@@ -1,5 +1,10 @@
 ---
-# ...
+# Installs NodeJS and NPM
+
+- include: install.yml
+  tags:
+    - BARC_INSTALL
+    - BARC_INSTALL_PACKAGES
 
 - include: register-role.yml
   tags:
