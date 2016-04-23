@@ -1,0 +1,11 @@
+---
+# Tests if NPM can actually be used
+
+- name: get npm version
+  command: npm --version
+  changed_when: false
+  register: nodejs5_test_fact_npm_version
+- name: assert npm is at least version 3
+  assert:
+    that:
+      - "'3.' in nodejs5_test_fact_npm_version.stdout"

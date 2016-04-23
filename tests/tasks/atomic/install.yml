@@ -1,0 +1,28 @@
+---
+# Tests NodeJS and NPM are installed correctly
+
+- name: determine if nodejs package is installed - CentOS
+  command: rpm -qa
+  changed_when: False
+  register: nodejs5_test_fact_node_package_is_installed_centos
+  when: ansible_distribution == "CentOS"
+
+- name: assert nodejs package is installed from non-system sources - CentOS
+  assert:
+    that:
+      - "'nodejs' in nodejs5_test_fact_node_package_is_installed_centos.stdout"
+  when: ansible_distribution == "CentOS"
+
+- name: determine if nodejs is installed - Ubuntu
+  command: dpkg -s {{ item }}
+  with_items:
+    - nodejs
+  changed_when: False
+  when: ansible_distribution == "Ubuntu"
+  register: nodejs5_test_fact_node_package_is_installed_ubuntu
+- name: assert nodejs is installed - Ubuntu
+  assert:
+    that:
+      - "'install ok installed' in item.stdout"
+  with_items: nodejs5_test_fact_node_package_is_installed_ubuntu.results
+  when: ansible_distribution == "Ubuntu"

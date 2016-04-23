@@ -1,0 +1,11 @@
+---
+# Tests if nodejs can actually be used
+
+- name: get nodejs version
+  command: node --version
+  changed_when: false
+  register: nodejs5_test_fact_nodejs_version
+- name: assert nodejs is at least version 5
+  assert:
+    that:
+      - "'v5.' in nodejs5_test_fact_nodejs_version.stdout"

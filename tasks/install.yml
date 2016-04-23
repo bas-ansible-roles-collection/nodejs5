@@ -1,0 +1,58 @@
+---
+# Installs NodeJS and NPM
+
+- name: add nodejs repository for installing from non-system sources - CentOS
+  yum:
+                 pkg={{ item }}
+        update_cache=yes
+               state=present
+  with_items:
+    - https://rpm.nodesource.com/pub_5.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
+  when: ansible_distribution == "CentOS"
+
+- name: install prerequisites for adding non-system package repositories - Ubuntu
+  apt:
+    update_cache=yes
+             pkg={{ item }}
+           state=present
+  with_items:
+    - apt-transport-https
+  when: ansible_distribution == "Ubuntu"
+
+- name: add singing key for nodejs repository from non-system sources - Ubuntu
+  apt_key:
+      url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state=present
+  when: ansible_distribution == "Ubuntu"
+
+- name: add nodejs repository for installing from non-system sources - Ubuntu
+  apt_repository:
+     repo='deb https://deb.nodesource.com/node_5.x trusty main'
+    state=present
+  when: ansible_distribution == "Ubuntu"
+
+- name: add nodejs source repository from non-system sources - Ubuntu
+  apt_repository:
+    repo='deb-src https://deb.nodesource.com/node_5.x trusty main'
+    state=present
+  when: ansible_distribution == "Ubuntu"
+
+- name: install nodejs and npm - CentOS
+  yum:
+                 pkg={{ item }}
+        update_cache=yes
+               state=present
+  with_items:
+    - python-pycurl
+    - nodejs
+  when: ansible_distribution == "CentOS"
+
+- name: install nodejs and npm - Ubuntu
+  apt:
+    update_cache=yes
+             pkg={{ item }}
+           state=present
+  with_items:
+    - python-pycurl
+    - nodejs
+  when: ansible_distribution == "Ubuntu"
