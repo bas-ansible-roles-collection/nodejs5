@@ -10,6 +10,15 @@
     - https://rpm.nodesource.com/pub_5.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
   when: ansible_distribution == "CentOS"
 
+- name: install prerequisites for adding non-system package repositories - Ubuntu
+  apt:
+    update_cache=yes
+             pkg={{ item }}
+           state=present
+  with_items:
+    - apt-transport-https
+  when: ansible_distribution == "Ubuntu"
+
 - name: add singing key for nodejs repository from non-system sources - Ubuntu
   apt_key:
       url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
