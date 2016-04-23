@@ -7,6 +7,8 @@ Remember: Make sure to update `nodejs5_barc_role_version` variable when a new ve
 
 ## [Unreleased][unreleased]
 
+## 0.1.0 - 22/04/2016
+
 ### Added
 
 * New role! - initial version based on 0.2.0 of the BARC flavour of the BAS Base Project - Pristine
